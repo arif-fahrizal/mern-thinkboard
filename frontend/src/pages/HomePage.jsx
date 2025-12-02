@@ -15,7 +15,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const { data } = await api.get("http://localhost:5001/api/notes");
+        const { data } = await api.get("/notes");
         setNotes(data.notes);
         setIsRateLimited(false);
       } catch (error) {
