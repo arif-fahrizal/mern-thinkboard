@@ -7,18 +7,19 @@ import notesRoutes from "./routes/notesRoutes.js"
 import { connectDB } from "./config/db.js"
 import rateLimiter from "./middleware/rateLimiter.js"
 
+dotenv.config()
+
 const app = express()
 const PORT = process.env.PORT || 5001
 const __dirname = path.resolve()
 
-dotenv.config()
-
 // This middleware will parse JSON bodies: req.body
-if (process.env.NODE_ENV !== "production") {
+// if (process.env.NODE_ENV !== "production") {
   app.use(cors({
-    origin: "http://localhost:5173"
+    origin: process.env.CLIENT_URL
   }))
-}
+// }
+console.log(process.env.CLIENT_URL)
 app.use(express.json())
 app.use(rateLimiter)
 

@@ -39,9 +39,9 @@ export default function HomePage() {
 
       <div className="max-w-7xl mx-auto mt-6 p-4">
         {loading && <Loading />}
-        {notes.length === 0 && !isRateLimited && !loading && <NotesNotFound />}
+        {notes?.length === 0 && !isRateLimited && !loading && <NotesNotFound />}
 
-        {notes.length > 0 && !isRateLimited && !loading && (
+        {notes?.length > 0 && !isRateLimited && !loading && (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {notes.map((note) => (
               <NoteCard key={note._id} note={note} setNotes={setNotes} />
